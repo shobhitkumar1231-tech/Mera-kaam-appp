@@ -1,0 +1,8 @@
+{
+  "name": "Mera Kaam",
+  "description": "Job marketplace connecting daily-wage workers and employers across India with Hindi and English support",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,3 +1,4 @@
+
 name: Build MeraKaam APK
 
 on:
@@ -11,7 +12,9 @@ permissions:
 
 jobs:
   build:
+    name: Build APK
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,10 +25,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.3.1'
+
       - name: Build APK
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleDebug
+        run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
@@ -33,5 +39,4 @@ jobs:
           name: MeraKaam-APK
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
-
           
